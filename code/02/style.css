@@ -1,0 +1,30 @@
+body{
+    background: #07267289;
+    color: rgb(17,0,250)
+}
+
+ul {
+    background: rgb(200,250,200);
+    color: rgb(200,0,200);
+}
+
+
+
+
+.my-button {
+    background-color: red;
+}
+
+.round {
+    border-radius:  10px;
+}
+
+.item{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+
+#first-item{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic
+}
