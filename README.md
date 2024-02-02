@@ -1,2 +1,2 @@
 # cc-code
-Repo for cc clas
+Repo for cc class
