@@ -2,16 +2,19 @@ import { WebSocketServer} from 'ws';
 
 const wss = new WebSocketServer ({port:3000});
 
-wss.on('connection', onConnection)
+
+wss.on('connection', onConnection);
 
 function onConnection (ws) {
-    ws.on('message', onmessage)
+   // console.log('connected');
+    ws.on('message', onMessage);
 }
 
-function onmessage(data) {
-    let jsonData =JSON.parse(data);
-    for (let i=0; i< wss.clients.length; i++) {
-        const c = wss.clients[i];
-        c.send(data);
-    }
+function onMessage(data) {
+    //console.log('on message', data)
+    let jd =JSON.parse(data);
+   wss.clients.forEach(client => {
+    client.send(JSON.stringify(jd));
+   });
+    
 }
