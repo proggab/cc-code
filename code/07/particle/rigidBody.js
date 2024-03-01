@@ -33,7 +33,12 @@ class RigidBody {
 
 
 display() {
-    circle(this.loc.x, this.loc.y, this.size);
+   // circle(this.loc.x, this.loc.y, this.size);
+   push();
+   translate(this.loc.x, this.loc.y);
+rotate(this.vel.heading() - PI/2);
+   triangle(0, 10, -2, -10, 2, -10);
+   pop();
 }
 
 }

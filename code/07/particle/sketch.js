@@ -1,56 +1,17 @@
-let birds = [];
-let mPressed;
-let mReleased;
-let mDragging = false; 
-let birdSize=50
+let ps;
+
 function setup() {
     createCanvas (600, 600);
-
-
-   
+    ps = new ParticleSystem();
 }
 
 function draw() {
 background(200);
-
-if (mDragging) {
-    line(mPressed.x,mPressed.y,mCurrent.x, mCurrent.y);
-    circle(mPressed.x, mPressed.y, birdSize);
-    
+ps.update();
+ps.display();
 }
-
-birds.forEach(bird => {
-
-bird.applyForce(createVector(0, 0.03));
-bird.bounce();
-bird.update();
-bird.display();
-})
-
-}
-
 
 function mousePressed () {
-    mPressed = createVector(mouseX, mouseY);
-    mCurrent = createVector(mouseX, mouseY);
-    mDragging = true; 
-
+   ps.addParticles(30, createVector(mouseX, mouseY));
     
 }
-
-function mouseDragged(){
-    mCurrent = createVector(mouseX, mouseY);
-    
-}
-
-function mouseReleased() {
-    mCurrent = createVector(mouseX, mouseY);
-    let bird = new RigidBody(mPressed.x, mPressed.y, birdSize);
-    mDragging=false;
-    force = p5.Vector.sub(mPressed,mCurrent);
-    force.mult(0.1);
-    bird.applyForce(force);
-
-    birds.push(bird);
-}
-
