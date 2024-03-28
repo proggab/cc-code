@@ -12,6 +12,6 @@ ps.display();
 }
 
 function mousePressed () {
-   ps.addParticles(30, createVector(mouseX, mouseY));
+   ps.addParticles(10, createVector(mouseX, mouseY));
     
 }

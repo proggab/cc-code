@@ -14,12 +14,30 @@ class ParticleSystem{
     }
 
     update() {
-        this.particles.forEach( p => {
+        for (let i=0; i<this.particles.length; i++){
+            let p = this.particle[i];
+
+for (let j=i+1; j<this.particles.length; j++){
+    let otherP=this.particles[j];
+    let distance = p.loc.dist(otherP.loc);
+    if(distance>0 && distance < (p.size+ otherP.size)/2) {
+    let push = p5.Vector.sub(p.loc, otherP.loc);
+push.normalize();
+push.div(distance*2);
+push.limit(0.05);
+p.applyForce(push);
+otherP.applyForce(push.multi(-1));
+    }
+
+}
             p.update();
             p.bounce();
-        })
         
+        
+            
+        }
     }
+
 
 display() {
     this.particles.forEach( p => {
